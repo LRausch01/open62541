@@ -57,6 +57,8 @@ add_example(tutorial_server_variabletype tutorial_server_variabletype.c)
 add_example(tutorial_server_object tutorial_server_object.c)
 add_example(tutorial_server_reverseconnect tutorial_server_reverseconnect.c)
 
+add_example(driver_usage driver/driver_usage.c)
+
 if(UA_ENABLE_SUBSCRIPTIONS)
     add_example(tutorial_server_monitoreditems tutorial_server_monitoreditems.c)
 endif()
