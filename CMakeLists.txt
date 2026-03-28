@@ -876,7 +876,8 @@ set(lib_headers ${PROJECT_SOURCE_DIR}/deps/open62541_queue.h
                 ${PROJECT_SOURCE_DIR}/src/server/ua_services.h
                 ${PROJECT_SOURCE_DIR}/src/server/ua_server_async.h
                 ${PROJECT_SOURCE_DIR}/src/server/ua_server_internal.h
-                ${PROJECT_SOURCE_DIR}/src/client/ua_client_internal.h)
+                ${PROJECT_SOURCE_DIR}/src/client/ua_client_internal.h
+                ${PROJECT_SOURCE_DIR}/src/driver/driver.h)
 
 if(UA_ENABLE_ENCRYPTION AND UA_ARCHITECTURE_WIN32)
     list(APPEND lib_headers ${PROJECT_SOURCE_DIR}/deps/tr_dirent.h)
@@ -918,7 +919,9 @@ set(lib_sources ${PROJECT_SOURCE_DIR}/src/ua_types.c
                 ${PROJECT_SOURCE_DIR}/src/server/ua_services_subscription.c
                 ${PROJECT_SOURCE_DIR}/src/server/ua_services_monitoreditem.c
                 ${PROJECT_SOURCE_DIR}/src/server/ua_services_securechannel.c
-                ${PROJECT_SOURCE_DIR}/src/server/ua_services_nodemanagement.c)
+                ${PROJECT_SOURCE_DIR}/src/server/ua_services_nodemanagement.c
+                # driver
+                ${PROJECT_SOURCE_DIR}/src/driver/driver.c)
 
 if(UA_ENABLE_RBAC)
     list(APPEND lib_sources ${PROJECT_SOURCE_DIR}/src/server/ua_server_rbac.c)
@@ -1483,7 +1486,8 @@ endfunction()
 
 include_directories_public("${PROJECT_SOURCE_DIR}/include"
                            "${PROJECT_SOURCE_DIR}/plugins/include"
-                           "${PROJECT_BINARY_DIR}/src_generated")
+                           "${PROJECT_BINARY_DIR}/src_generated"
+                           "${PROJECT_SOURCE_DIR}/src/driver")
 
 if(UA_ENABLE_NODESETLOADER)
     include_directories_public(${NODESETLOADER_PUBLIC_INCLUDES})
